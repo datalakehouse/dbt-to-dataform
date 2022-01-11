@@ -5,12 +5,11 @@ This jupyter process converts a project written in DBT by a Dataform project.
 
 ## Process to follow before running notebook
 
-* Make sure you already have dataform installed on your computer; If it's not, you follow use [this walkthrough.]
-(https://docs.google.com/document/d/1XO6TBx3uXLtpa8jvVBOoQrFvkm3Gg4QQ_MgcEQGeXns/edit)
-* Make sure you have the repository of the DBT source project to be converted on your local machine;
+* Make sure you already have dataform installed on your computer; If it's not, you follow use [this walkthrough.](https://docs.google.com/document/d/1XO6TBx3uXLtpa8jvVBOoQrFvkm3Gg4QQ_MgcEQGeXns/edit)
+* Make sure you have DBT's source repository on your local machine;
 * Clone this repository on the same path as you have your DBT Project 
     * gh repo clone datalakehouse/dbt-to-dataform
-* Copy your .df_credentials.json file that you generated on dataform configuration to the same path; The path structure should be like below;
+* Copy .df_credentials.json file that you had generated on dataform configuration to the same path; The path structure should be like below;
     * dbt_project/
     * .df_credentials.json
     * dbt-to-dataform/notebook
@@ -19,7 +18,7 @@ This jupyter process converts a project written in DBT by a Dataform project.
 
 ## Start Jupyter
 
-Execute **jupyter-notebook** command on your CLI to start jupyer notebook.
+Execute **jupyter-notebook** command on your CLI to start jupyter notebook.
 
 ## Input variables
 
