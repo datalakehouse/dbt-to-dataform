@@ -87,7 +87,7 @@ Below, are the functions that will be ran in sequence by **dbt_dataform_converte
 4. edit packages.json file with target dataform version, and adding dataform-scd package;
 5. runs dataform install to setup target version and scd package;
 
-#### create_sqlx_json_source_file
+#### create_js_source_file
 #
 1. gets all yml files that contains sources on models folder of dbt source project;
 2. generate one .JS file for each source table contained on the yml files on definitions/sources on dataform project;
