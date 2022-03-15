@@ -90,8 +90,7 @@ Below, are the functions that will be ran in sequence by **dbt_dataform_converte
 #### create_sqlx_json_source_file
 #
 1. gets all yml files that contains sources on models folder of dbt source project;
-2. generate one file for each source table contained on the yml files on definitions/sources on dataform project;
-3. The name of the file will follow this pattern: **schema**_**table**.sqlx
+2. generate one .JS file for each source table contained on the yml files on definitions/sources on dataform project;
 
 #### create_sqlx_models_files
 # 
