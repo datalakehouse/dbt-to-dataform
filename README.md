@@ -29,12 +29,14 @@ Navigate until **dbt_dataform_converter.ipynb** file.
 ### Input variables
 
 On this part of the code (image), insert the variables as requested.
-* dbt_source_project_path: The path of your source dbt project;
-* dataform_root_path: The target dataform path to be generated;
-* target_schema: The name of the schema to be created by Dataform on snowflake;
-* dlh_timestamp_field: If your code has SCD Snapshot files, Dataform requires to inform a timestamp field to be checked when generating snapshot. Must be a field on your model that tracks the last update datetime for each record;
+* `dbt_source_project_path`: The path of your source dbt project;
+* `dataform_root_path`: The target dataform path to be generated;
+* `target_schema`: The name of the schema to be created by Dataform on snowflake;
+* `conversion_type`: Define if the code will be converted to JS or SQLX on dataform. If you want to create a Dataform package, must use JS, otherwise, SQLX.
+* `dlh_timestamp_field`: If your code has SCD Snapshot files, Dataform requires to inform a timestamp field to be checked when generating snapshot. Must be a field on your model that tracks the last update datetime for each record;
 
-![](https://i.imgur.com/Bo8p9GW.png)
+![](https://i.imgur.com/FzPaWIl.png)
+
 
 ### Running the python code
 
@@ -92,10 +94,19 @@ Below, are the functions that will be ran in sequence by **dbt_dataform_converte
 1. gets all yml files that contains sources on models folder of dbt source project;
 2. generate one .JS file for each source table contained on the yml files on definitions/sources on dataform project;
 
-#### create_sqlx_models_files
+#### create_sqlx_models_files (*only used when `target_schema` = 'sqlx')
 # 
 1. gets all .sql files on dbt's models repository;
-2. copy all files to target dataform's definitions repository, replacing the extension to .sql;
+2. copy all files to target dataform's definitions repository, replacing the extension to .sqlx;
+3. replace header with dataform's syntax using replace and regex substitution functions;
+4. replace syntax patterns on dbt project to dataform's;
+5. remove unsupported DBT's config header features;
+6. replace syntax pattern of incremental models macros on dataform;
+
+#### create_js_model_files (*only used when `target_schema` = 'js')
+#
+1. gets all .sql files on dbt's models repository;
+2. copy all files to target dataform's definitions repository, replacing the extension to .js;
 3. replace header with dataform's syntax using replace and regex substitution functions;
 4. replace syntax patterns on dbt project to dataform's;
 5. remove unsupported DBT's config header features;
