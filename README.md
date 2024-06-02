@@ -5,7 +5,7 @@ This jupyter process converts a project written in DBT by a Dataform project.
 
 ## Process to follow before running notebook
 
-* Make sure you already have dataform installed on your computer; If it's not, you follow use [this walkthrough.](https://docs.google.com/document/d/1XO6TBx3uXLtpa8jvVBOoQrFvkm3Gg4QQ_MgcEQGeXns/edit)
+* Make sure you already have dataform installed on your computer; If it's not, you follow use [this walkthrough.](https://docs.google.com/document/d/1SDNsITMVg014fpeAJeV8__GLgU_K5BrwpXPDNSLhvmU/edit?usp=sharing)
 * Make sure you have DBT's source repository on your local machine;
 * Clone this repository on the same path as you have your DBT Project 
     * gh repo clone datalakehouse/dbt-to-dataform
@@ -14,7 +14,7 @@ This jupyter process converts a project written in DBT by a Dataform project.
     * .df_credentials.json
     * dbt-to-dataform/notebook
 * Make sure you have Python, Juptyter notebook or Hub installed on your machine;
-* [Read the spreadsheet](https://https://docs.google.com/spreadsheets/d/1q96HottHJaEC9vZ0NPrwLsoxVpnRE7fLGz5zI-y0mM0/edit#gid=0) to make sure that each part of your code will be converted as expected;
+* [Read the spreadsheet](https://docs.google.com/spreadsheets/d/1ZJqYl7eK6DQ5mnDjELzpOH4_ukS5unuk3PN12R_6Hb8/edit?usp=sharing) to make sure that each part of your code will be converted as expected;
 
 ## Begin the process
 
