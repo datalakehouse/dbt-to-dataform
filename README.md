@@ -1,7 +1,7 @@
 # DBT to Dataform Conversion
 
 This jupyter process converts a project written in DBT by a Dataform project.
-[In this spreadsheet](https://docs.google.com/spreadsheets/d/1q96HottHJaEC9vZ0NPrwLsoxVpnRE7fLGz5zI-y0mM0/edit#gid=0), you can see the details about the objects that are converted by the python code, and some important notes about possible limitations, as well as the roadmap for future implementations.
+[In this spreadsheet](https://docs.google.com/spreadsheets/d/1ZJqYl7eK6DQ5mnDjELzpOH4_ukS5unuk3PN12R_6Hb8/edit?usp=sharing), you can see the details about the objects that are converted by the python code, and some important notes about possible limitations, as well as the roadmap for future implementations.
 
 ## Process to follow before running notebook
 
@@ -48,7 +48,7 @@ On the last cell, you must have a return close to this.
 
 ### Running dataform project
 
-Make sure you have [read the spreadsheet](https://https://docs.google.com/spreadsheets/d/1q96HottHJaEC9vZ0NPrwLsoxVpnRE7fLGz5zI-y0mM0/edit#gid=0) to understand the limitations of the converter based on your current DBT code.
+Make sure you have [read the spreadsheet](https://docs.google.com/spreadsheets/d/1ZJqYl7eK6DQ5mnDjELzpOH4_ukS5unuk3PN12R_6Hb8/edit?usp=sharing) to understand the limitations of the converter based on your current DBT code.
 
 On the case of the test I've made, based on dlh_square_analytics project, below are the changes that I needed to do before running dataform's code.
 
