@@ -16,6 +16,12 @@ This jupyter process converts a project written in DBT to a Google Dataform proj
 * Make sure you have Python, Juptyter notebook or Hub installed on your machine;
 * [Read the spreadsheet](https://docs.google.com/spreadsheets/d/1ZJqYl7eK6DQ5mnDjELzpOH4_ukS5unuk3PN12R_6Hb8/edit?usp=sharing) to make sure that each part of your code will be converted as expected;
 
+### Other Reference Project Docs
+* [dbt-to-dataform - dataform install and config basics](https://docs.google.com/document/d/1SDNsITMVg014fpeAJeV8__GLgU_K5BrwpXPDNSLhvmU/edit?usp=drive_link)
+* [dbt-to-dataform - dbt and dataform syntax differences](https://docs.google.com/document/d/12VIG7YU0jSLAuvbTGIXUrKNIPdA1jffTqZ16Ib6BHg4/edit?usp=drive_link)
+* [dbt-to-dataform conversion concept roadmap](https://docs.google.com/spreadsheets/d/1ZJqYl7eK6DQ5mnDjELzpOH4_ukS5unuk3PN12R_6Hb8/edit?usp=drive_link)
+
+
 ## Begin the process
 
 ### Start Jupyter
@@ -132,7 +138,9 @@ Below, are the functions that will be run in sequence by **dbt_dataform_converte
 If you have any comments, questions please consider joining our DataLakeHouse Slack Channel Community where we discuss this project and other data engineering and analytics engineering related topics,
 https://datalakehouse.slack.com/
 
+
 ## Contribution
+*
 We welcome any and all feedback and contribution to further the project.
 Please take a look at this project on how to contribute. We think their guidelines are pretty darn good, https://github.com/firstcontributions/first-contributions
 
