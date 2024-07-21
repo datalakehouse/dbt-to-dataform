@@ -1,11 +1,11 @@
 # DBT to Dataform Conversion
 
-This jupyter process converts a project written in DBT by a Dataform project.
+This jupyter process converts a project written in DBT to a Google Dataform project.
 [In this spreadsheet](https://docs.google.com/spreadsheets/d/1ZJqYl7eK6DQ5mnDjELzpOH4_ukS5unuk3PN12R_6Hb8/edit?usp=sharing), you can see the details about the objects that are converted by the python code, and some important notes about possible limitations, as well as the roadmap for future implementations.
 
 ## Process to follow before running notebook
 
-* Make sure you already have dataform installed on your computer; If it's not, you follow use [this walkthrough.](https://docs.google.com/document/d/1SDNsITMVg014fpeAJeV8__GLgU_K5BrwpXPDNSLhvmU/edit?usp=sharing)
+* Make sure you already have dataform installed on your computer; If it's not, just follow [this walkthrough.](https://docs.google.com/document/d/1SDNsITMVg014fpeAJeV8__GLgU_K5BrwpXPDNSLhvmU/edit?usp=sharing)
 * Make sure you have DBT's source repository on your local machine;
 * Clone this repository on the same path as you have your DBT Project 
     * gh repo clone datalakehouse/dbt-to-dataform
@@ -20,18 +20,18 @@ This jupyter process converts a project written in DBT by a Dataform project.
 
 ### Start Jupyter
 
-Execute **jupyter-notebook** command on your CLI to start jupyter notebook.
+Execute the **jupyter-notebook** command on your CLI to start jupyter notebook.
 
-After starting the jupyter notebook on your local machine, navigate to the webpage. This is typically, http://localhost:8888/
+After starting the jupyter notebook on your local machine, navigate to the web server page. This is typically, http://localhost:8888/
 
-Navigate until **dbt_dataform_converter.ipynb** file.
+Navigate to the **dbt_dataform_converter.ipynb** file.
 
 ### Input variables
 
 On this part of the code (image), insert the variables as requested.
 * `dbt_source_project_path`: The path of your source dbt project;
 * `dataform_root_path`: The target dataform path to be generated;
-* `target_schema`: The name of the schema to be created by Dataform on snowflake;
+* `target_schema`: The name of the schema to be created by Dataform on the target data warehouse platform, e.g.: Snowflake;
 * `conversion_type`: Define if the code will be converted to JS or SQLX on dataform. If you want to create a Dataform package, must use JS, otherwise, SQLX.
 * `dlh_timestamp_field`: If your code has SCD Snapshot files, Dataform requires to inform a timestamp field to be checked when generating snapshot. Must be a field on your model that tracks the last update datetime for each record;
 
@@ -48,11 +48,11 @@ On the last cell, you must have a return close to this.
 
 ### Running dataform project
 
-Make sure you have [read the spreadsheet](https://docs.google.com/spreadsheets/d/1ZJqYl7eK6DQ5mnDjELzpOH4_ukS5unuk3PN12R_6Hb8/edit?usp=sharing) to understand the limitations of the converter based on your current DBT code.
+Make sure you have [read the spreadsheet](https://docs.google.com/spreadsheets/d/1ZJqYl7eK6DQ5mnDjELzpOH4_ukS5unuk3PN12R_6Hb8/edit?usp=sharing) to understand the current limitations of the converter based on your current DBT code.
 
-On the case of the test I've made, based on dlh_square_analytics project, below are the changes that I needed to do before running dataform's code.
+On the case of the unit testing, based on dlh_square_analytics project, below are the changes that needed prior to running Dataform's code.
 
-* Square analytics project, uses a full_name macro. It was required to be rewritten on dataform. Write your macro in a .JS file and put that file inside includes folder.
+* Square analytics project, uses a full_name macro. It was required to be rewritten on Dataform. Write your macro in a .JS file and put that file inside includes folder.
 
 ![](https://i.imgur.com/eIifhan.png)
 
@@ -60,11 +60,11 @@ On the case of the test I've made, based on dlh_square_analytics project, below 
 
 ![](https://i.imgur.com/LcmQlSt.png)
 
-* Execute dataform compile comand to make sure anything will break
+* Execute the dataform compile command to make sure nothing will break at runtime
 
 ![](https://i.imgur.com/cduMJVs.png)
 
-* Change default schema on dataform.json file
+* Change the default schema on dataform.json file
 
 ![](https://i.imgur.com/zSBqO0I.png)
 
@@ -75,11 +75,11 @@ On the case of the test I've made, based on dlh_square_analytics project, below 
 
 ## Output
 
-The output dataform will be generated on the path contained on **dataform_root_path** variable.
+The output for Dataform will be generated on the path contained on **dataform_root_path** variable.
 
 When the code runs, it will check if this directory already exists. If it does not exists, it will be created, otherwise, it will be deleted and created again.
 
-Below, are the functions that will be ran in sequence by **dbt_dataform_converter** function.
+Below, are the functions that will be run in sequence by **dbt_dataform_converter** function.
 
 #### dataform_install_configuration
 #
@@ -91,7 +91,7 @@ Below, are the functions that will be ran in sequence by **dbt_dataform_converte
 
 #### create_js_source_file
 #
-1. gets all yml files that contains sources on models folder of dbt source project;
+1. gets all yml files that contain sources in the models folder of dbt source project;
 2. generate one .JS file for each source table contained on the yml files on definitions/sources on dataform project;
 
 #### create_sqlx_models_files (*only used when `target_schema` = 'sqlx')
@@ -122,8 +122,17 @@ Below, are the functions that will be ran in sequence by **dbt_dataform_converte
 #### dataform_assertions_documentation
 
 1. gets all .yml test and schema definition files on DBT's model repository;
-2. gets unique, not_null tests and the corresponding tables and columns;
+2. gets unique and not_null tests and the corresponding tables and columns;
 3. gets descriptions on tables and/or columns presents on yml files;
 4. create a python dictionary with those tests and descriptions;
 5. write assertions (tests) and descriptions inside each model already present on dataform's definitions folder
+
+
+## Comments and Community
+If you have any comments, questions please consider joining our DataLakeHouse Slack Channel Community where we discuss this project and other data engineering and analytics engineering related topics,
+https://datalakehouse.slack.com/
+
+## Contribution
+We welcome any and all feedback and contribution to further the project.
+Please take a look at this project on how to contribute. We think their guidelines are pretty darn good, https://github.com/firstcontributions/first-contributions
 
